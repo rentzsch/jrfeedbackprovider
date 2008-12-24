@@ -25,7 +25,7 @@ if (array_key_exists('feedback', $_REQUEST)) {
 	$msg .= "\r\n\r\n--------\r\n\r\n";
 	$msg .= "System Profile: $systemProfile\r\n";
 	
-	mail("crashes@bitmaki.com", "[$feedbackType] $appName", $msg);
+	mail("YOUR_FEEDBACK_EMAIL_ADDRESS_HERE@gmail.com", "[$feedbackType] $appName", $msg);
 }
 ?>
 
