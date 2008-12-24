@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'JRFeedbackProvider' target in the 'JRFeedbackProvider' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
