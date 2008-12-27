@@ -18,12 +18,10 @@ if (array_key_exists('feedback', $_REQUEST)) {
 	$bundleID = $_REQUEST['bundleID'];
 	$systemProfile = $_REQUEST['systemProfile'];
 	
-	$msg .= "\r\n\r\n";
-	$msg .= "Bundle ID: $bundleID\r\n";
-	$msg .= "Email: $email\r\n";
-	$msg .= "Feedback: $feedback\r\n";
-	$msg .= "\r\n\r\n--------\r\n\r\n";
-	$msg .= "System Profile: $systemProfile\r\n";
+	$msg .= "$feedback\n";
+	$msg .= "\n--------\n\n";
+	$msg .= "Bundle ID: $bundleID\n";
+	$msg .= "System Profile: $systemProfile\n";
 	
 	mail("YOUR_FEEDBACK_EMAIL_ADDRESS_HERE@gmail.com", "[$feedbackType] $appName", $msg);
 }
