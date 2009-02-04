@@ -15,7 +15,9 @@ Please [report bugs and request features](http://rentzsch.lighthouseapp.com/proj
 * **1.1**
 
 	* [NEW] Set the user's reply address in the server-side PHP script. (Michael Zornek)
+
 	* [FIX] Assertion failure if user clicks "Send" button and without waiting click the "Cancel" button. (Oleg Krupnov)
+
 	* [CHANGE] Change "Submit" button to "Send" to be more respectful of the user. (Oleg Krupnov)
 
 * **1.0** Original release
