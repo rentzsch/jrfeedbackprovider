@@ -11,7 +11,7 @@
 
 // TODO Sys Config network presensce
 
-JRFeedbackController *gFeedbackController;
+JRFeedbackController *gFeedbackController = nil;
 
 NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
     @"BUG", // JRFeedbackController_BugReport
@@ -140,10 +140,12 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
 }
 
 - (void)closeFeedback {
-    assert(gFeedbackController == self);
-    [[gFeedbackController window] orderOut:self];
-    [gFeedbackController release];
-    gFeedbackController = nil;
+    if (gFeedbackController) {
+        assert(gFeedbackController == self);
+        [[gFeedbackController window] orderOut:self];
+        [gFeedbackController release];
+        gFeedbackController = nil;
+    }
 }
 
 - (IBAction)cancelAction:(id)sender {
