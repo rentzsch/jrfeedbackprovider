@@ -12,6 +12,7 @@
 if (array_key_exists('feedback', $_REQUEST)) {
 	$feedbackType = $_REQUEST['feedbackType'];
 	$appName = $_REQUEST['appName'];
+	$appVersion = $_REQUEST['version'];
 	
 	// if they choose not to give us their email, I will use my own
 	// if I left the email blank it would come from 
@@ -38,7 +39,7 @@ if (array_key_exists('feedback', $_REQUEST)) {
 	$msg .= "Bundle ID: $bundleID\n";
 	$msg .= "System Profile: $systemProfile\n";
 	
-	mail("YOUR_FEEDBACK_EMAIL_ADDRESS_HERE@gmail.com", "[$feedbackType] $appName", $msg, $headers);
+	mail("YOUR_FEEDBACK_EMAIL_ADDRESS_HERE@gmail.com", "[$feedbackType] $appName $appVersion", $msg, $headers);
 }
 ?>
 

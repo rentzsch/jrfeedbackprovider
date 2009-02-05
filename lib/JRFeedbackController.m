@@ -28,6 +28,15 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
     [gFeedbackController showWindow:self];
 }
 
++ (void)showFeedbackWithBugDetails:(NSString *)details {
+    if (!gFeedbackController) {
+        gFeedbackController = [[JRFeedbackController alloc] init];
+    }
+    [gFeedbackController showWindow:self];
+	// There is an assumption here that bug report is the first and default view of the window.
+	[gFeedbackController setTextViewStringTo:details];
+}
+
 - (id)init {
     self = [super initWithWindowNibName:@"JRFeedbackProvider"];
     if (self) {
@@ -88,9 +97,15 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
     [textView setEditable:NO];
     
     [progress startAnimation:self];
-    [NSThread detachNewThreadSelector:@selector(system_profilerThread:)
-                             toTarget:self
-                           withObject:nil];
+    
+    // if they checked not to include hardware, don't scan. Post right away.
+	if ([includeHardwareDetailsCheckbox intValue] == 1) {
+		[NSThread detachNewThreadSelector:@selector(system_profilerThread:)
+								 toTarget:self
+							   withObject:nil];
+	} else {
+		[self postFeedback:@"<systemProfile suppressed>"];
+	}
     
     //--
 }
@@ -164,6 +179,13 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
 
 - (void)windowWillClose:(NSNotification*)notification {
     [self closeFeedback];
+}
+
+- (void)setTextViewStringTo:(NSString *)details
+{
+	// TODO: doing this makes all the text bold, I'm not hip to the attr string stuff done in this class
+	// so it's not easy for me to fix.
+	[textView setString:details];
 }
 
 @end

@@ -12,6 +12,14 @@ Please [report bugs and request features](http://rentzsch.lighthouseapp.com/proj
 
 ##Version History
 
+* **1.1.1 (zorn fork)**
+
+  * [NEW] Added new checkbox to the Feedback Window so users can acknowledge they are sending their hardware profile in.
+  * [CHANGE] Made text of feedback message text view use black instead of green.
+  * [NEW] Added a new class function to `JRFeedbackController` that allows you to initialize a feedback window with specific bug report text. This method assumes Bug Report is the default tab selected.
+  * [NEW BUG] When using this new method the textView is given the bug report text via `setString:` this result in all the test being bold by default.
+  * [CHANGE] Edited the `jrfeedback.php` slightly so that appVersion (which `JRFeedbackController` already sends out) is picked up and put into the subject line.
+
 * **1.1**
 
 	* [NEW] Set the user's reply address in the server-side PHP script. (Michael Zornek)

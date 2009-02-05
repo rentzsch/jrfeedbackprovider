@@ -16,6 +16,7 @@ typedef enum {
 
 @interface JRFeedbackController : NSWindowController {
     IBOutlet NSTextView *textView;
+    IBOutlet NSButton *includeHardwareDetailsCheckbox;
     IBOutlet NSButton *includeEmailAddressCheckbox;
     IBOutlet NSComboBox *emailAddressComboBox;
     IBOutlet NSProgressIndicator *progress;
@@ -25,9 +26,12 @@ typedef enum {
 }
 
 + (void)showFeedback;
++ (void)showFeedbackWithBugDetails:(NSString *)details;
 
 - (IBAction)switchSectionAction:(NSSegmentedControl*)sender;
 - (IBAction)submitAction:(id)sender;
 - (IBAction)cancelAction:(id)sender;
+- (void)postFeedback:(NSString*)systemProfile;
+- (void)setTextViewStringTo:(NSString *)details;
 
 @end
