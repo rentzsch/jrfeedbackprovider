@@ -6,6 +6,8 @@ is a nonviral (MIT license) drop-in source code package which provides an in-app
 
 It supplies the panel (in .xib form), the Objective-C controller code and even the `.php` file to put on your web server to turn those web form posts into email messages (just replace `YOUR_(FEEDBACK_)EMAIL_ADDRESS_HERE@gmail.com` with whatever you want).
 
+Mike Zornek has created a [nice screencast demonstrating how JRFeedbackProvider works and how to integrate it with your application](http://blog.clickablebliss.com/2009/03/03/screencast-introduction-to-jrfeedbackprovider/). Thanks, Mike!
+
 Requires 10.5.
 
 Please [report bugs and request features](http://rentzsch.lighthouseapp.com/projects/24800-jrfeedbackprovider/tickets/new) on the [Lighthouse JRFeedbackProvider project site](http://rentzsch.lighthouseapp.com/projects/24800-jrfeedbackprovider/tickets?q=all).
