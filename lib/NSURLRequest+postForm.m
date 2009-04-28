@@ -54,7 +54,13 @@
     //--
     // Create the formData.
     NSMutableData *formData = [NSMutableData data];
+#if defined(OBJC_API_VERSION) && OBJC_API_VERSION >= 2
     for (NSString *key in [values allKeys]) {
+#else
+    NSEnumerator *e = [[values allKeys] objectEnumerator];
+    NSString* key;
+    while ((key = [e nextObject]) != nil) {
+#endif
         [formData appendFormat:@"\r\n--%@\r\n", boundary];
         // TODO escape keys with quotes in them.
         [formData appendFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n", key];
