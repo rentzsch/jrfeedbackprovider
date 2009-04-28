@@ -8,7 +8,7 @@ It supplies the panel (in .xib form), the Objective-C controller code and even t
 
 Mike Zornek has created a [nice screencast demonstrating how JRFeedbackProvider works and how to integrate it with your application](http://blog.clickablebliss.com/2009/03/03/screencast-introduction-to-jrfeedbackprovider/). Thanks, Mike!
 
-Requires 10.5.
+Requires 10.4 or later. Developed and tested on 10.5.
 
 Please [report bugs and request features](http://rentzsch.lighthouseapp.com/projects/24800-jrfeedbackprovider/tickets/new) on the [Lighthouse JRFeedbackProvider project site](http://rentzsch.lighthouseapp.com/projects/24800-jrfeedbackprovider/tickets?q=all).
 
