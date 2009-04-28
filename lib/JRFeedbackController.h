@@ -18,6 +18,7 @@ typedef enum {
     IBOutlet NSTextView *textView;
     IBOutlet NSButton *includeHardwareDetailsCheckbox;
     IBOutlet NSButton *includeEmailAddressCheckbox;
+    IBOutlet NSTextField *nameTextField;
     IBOutlet NSComboBox *emailAddressComboBox;
     IBOutlet NSProgressIndicator *progress;
     

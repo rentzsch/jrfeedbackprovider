@@ -70,12 +70,16 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
     [textView moveToBeginningOfDocument:self];
     [textView moveDown:self];
     
-    ABMutableMultiValue *emailAddresses = [[[ABAddressBook sharedAddressBook] me] valueForProperty:kABEmailProperty];
-    unsigned addyIndex = 0, addyCount = [emailAddresses count];
-    for (; addyIndex < addyCount; addyIndex++) {
-        [emailAddressComboBox addItemWithObjectValue:[emailAddresses valueAtIndex:addyIndex]];
+    ABPerson *me = [[ABAddressBook sharedAddressBook] me];
+    if (me) {
+        [nameTextField setStringValue:[NSString stringWithFormat:@"%@ %@", [me valueForProperty:kABFirstNameProperty], [me valueForProperty:kABLastNameProperty]]];
+        ABMutableMultiValue *emailAddresses = [me valueForProperty:kABEmailProperty];
+        unsigned addyIndex = 0, addyCount = [emailAddresses count];
+        for (; addyIndex < addyCount; addyIndex++) {
+            [emailAddressComboBox addItemWithObjectValue:[emailAddresses valueAtIndex:addyIndex]];
+        }
+        [emailAddressComboBox selectItemAtIndex:0];
     }
-    [emailAddressComboBox selectItemAtIndex:0];
 }
 
 - (IBAction)switchSectionAction:(NSSegmentedControl*)sender {
@@ -107,8 +111,6 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
 	} else {
 		[self postFeedback:@"<systemProfile suppressed>"];
 	}
-    
-    //--
 }
 
 - (void)system_profilerThread:(id)ignored {
@@ -141,7 +143,16 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
         postURL = [[NSUserDefaults standardUserDefaults] stringForKey:@"JRFeedbackURL"];
     }
     
-    NSString *email = [includeEmailAddressCheckbox intValue] ? [emailAddressComboBox stringValue] : @"<email suppressed>";
+    NSString *email = @"<email suppressed>";
+    if ([includeEmailAddressCheckbox intValue]) {
+        if ([[nameTextField stringValue] length]) {
+            NSMutableString *name = [[[nameTextField stringValue] mutableCopy] autorelease];
+            [name replaceOccurrencesOfString:@"\"" withString:@"\\\"" options:0 range:NSMakeRange(0, [name length])];
+            email = [NSString stringWithFormat:@"\"%@\" <%@>", name, [emailAddressComboBox stringValue]];
+        } else {
+            email = [emailAddressComboBox stringValue];
+        }
+    }
     NSDictionary *form = [NSDictionary dictionaryWithObjectsAndKeys:
                           JRFeedbackType[currentSection], @"feedbackType",
                           [sectionStrings[currentSection] string], @"feedback",

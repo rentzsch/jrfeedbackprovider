@@ -14,6 +14,9 @@ Please [report bugs and request features](http://rentzsch.lighthouseapp.com/proj
 
 ##Version History
 
+* **1.4**
+	* [NEW] Add field for the submitter's name, auto-populated from the address book. (Victoria Wang)
+
 * **1.3**
 	* [NEW] Use `+[NSBundle bundleForClass:]` instead of `+[NSBundle mainBundle]` so JRFeedbackProvider is usable with plug-ins like .prefPanes. (Joesph Wardell)
 	* [NEW] 10.4 support. Remove sole trivial use of ObjC 2 fast-enumeration so we can also target 10.4. (Joesph Wardell)
