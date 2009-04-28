@@ -545,7 +545,7 @@ ZWxwIHlvdT8KA</bytes>
 							<object class="NSButtonCell" key="NSCell" id="992264886">
 								<int key="NSCellFlags">-2080244224</int>
 								<int key="NSCellFlags2">0</int>
-								<string key="NSContents">Include details about my computer.</string>
+								<string key="NSContents">Include details about my computer</string>
 								<reference key="NSSupport" ref="901555168"/>
 								<reference key="NSControlView" ref="646232360"/>
 								<int key="NSButtonFlags">1211912703</int>
