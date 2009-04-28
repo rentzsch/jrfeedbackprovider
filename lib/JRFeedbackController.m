@@ -46,7 +46,8 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
 }
 
 - (void)windowDidLoad {
-    [[self window] setTitle:[NSString stringWithFormat:@"%@ Feedback", [[NSProcessInfo processInfo] processName]]];
+    NSString* title = [NSString stringWithFormat:@"%@ Feedback", [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey]];
+    [[self window] setTitle:title];
     
     NSTextStorage *text = [textView textStorage];
     
@@ -135,7 +136,7 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
 }
 
 - (void)postFeedback:(NSString*)systemProfile {
-    NSString *postURL = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"JRFeedbackURL"];
+    NSString *postURL = [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"JRFeedbackURL"];
     if ([[NSUserDefaults standardUserDefaults] stringForKey:@"JRFeedbackURL"]) {
         postURL = [[NSUserDefaults standardUserDefaults] stringForKey:@"JRFeedbackURL"];
     }
@@ -145,9 +146,9 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
                           JRFeedbackType[currentSection], @"feedbackType",
                           [sectionStrings[currentSection] string], @"feedback",
                           email, @"email",
-                          [[NSProcessInfo processInfo] processName], @"appName",
-                          [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"], @"bundleID",
-                          [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"], @"version",
+                          [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"CFBundleName"], @"appName",
+                          [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"CFBundleIdentifier"], @"bundleID",
+                          [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"CFBundleVersion"], @"version",
                           systemProfile, @"systemProfile",
                           nil];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:postURL] postForm:form];

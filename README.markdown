@@ -14,7 +14,10 @@ Please [report bugs and request features](http://rentzsch.lighthouseapp.com/proj
 
 ##Version History
 
-* **1.1.1**
+* **1.3**
+	* [NEW] Use `+[NSBundle bundleForClass:]` instead of `+[NSBundle mainBundle]` so JRFeedbackProvider can be used within plug-ins like .prefPanes. (Joesph Wardell)
+
+* **1.2** *(formerly released as 1.1.1)*
 
 	* [NEW] Added new checkbox to the Feedback Window so users can acknowledge they are sending their hardware profile in.
 
