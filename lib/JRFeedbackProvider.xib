@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="2"/>
+			<integer value="63"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -61,19 +61,19 @@
 										<double key="NSSegmentItemWidth">1.500000e+02</double>
 										<string key="NSSegmentItemLabel">Bug Report</string>
 										<bool key="NSSegmentItemSelected">YES</bool>
-										<int key="NSSegmentItemImageScaling">0</int>
+										<int key="NSSegmentItemImageScaling">2</int>
 									</object>
 									<object class="NSSegmentItem">
 										<double key="NSSegmentItemWidth">1.500000e+02</double>
 										<string key="NSSegmentItemLabel">Feature Request</string>
 										<int key="NSSegmentItemTag">1</int>
-										<int key="NSSegmentItemImageScaling">0</int>
+										<int key="NSSegmentItemImageScaling">2</int>
 									</object>
 									<object class="NSSegmentItem">
 										<double key="NSSegmentItemWidth">1.500000e+02</double>
 										<string key="NSSegmentItemLabel">Support</string>
 										<int key="NSSegmentItemTag">2</int>
-										<int key="NSSegmentItemImageScaling">0</int>
+										<int key="NSSegmentItemImageScaling">2</int>
 									</object>
 								</object>
 								<int key="NSSegmentStyle">4</int>
@@ -294,7 +294,7 @@ ZWxwIHlvdT8KA</bytes>
 															<int key="NSColorSpace">1</int>
 															<bytes key="NSRGB">MCAwIDEAA</bytes>
 														</object>
-														<integer value="1"/>
+														<integer value="1" id="9"/>
 													</object>
 												</object>
 												<nil key="NSDefaultParagraphStyle"/>
@@ -363,7 +363,7 @@ ZWxwIHlvdT8KA</bytes>
 								</object>
 								<reference key="NSControlView" ref="433151666"/>
 								<int key="NSButtonFlags">-2038284033</int>
-								<int key="NSButtonFlags2">129</int>
+								<int key="NSButtonFlags2">1</int>
 								<string key="NSAlternateContents"/>
 								<string key="NSKeyEquivalent"/>
 								<int key="NSPeriodicDelay">200</int>
@@ -383,7 +383,7 @@ ZWxwIHlvdT8KA</bytes>
 								<reference key="NSSupport" ref="901555168"/>
 								<reference key="NSControlView" ref="832097410"/>
 								<int key="NSButtonFlags">-2038284033</int>
-								<int key="NSButtonFlags2">129</int>
+								<int key="NSButtonFlags2">1</int>
 								<string key="NSAlternateContents"/>
 								<string type="base64-UTF8" key="NSKeyEquivalent">Gw</string>
 								<int key="NSPeriodicDelay">200</int>
@@ -413,7 +413,7 @@ ZWxwIHlvdT8KA</bytes>
 								<reference key="NSSupport" ref="901555168"/>
 								<reference key="NSControlView" ref="646232360"/>
 								<int key="NSButtonFlags">1211912703</int>
-								<int key="NSButtonFlags2">130</int>
+								<int key="NSButtonFlags2">2</int>
 								<object class="NSCustomResource" key="NSNormalImage" id="136078884">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">NSSwitch</string>
@@ -440,7 +440,7 @@ ZWxwIHlvdT8KA</bytes>
 								<reference key="NSSupport" ref="901555168"/>
 								<reference key="NSControlView" ref="10421984"/>
 								<int key="NSButtonFlags">1211912703</int>
-								<int key="NSButtonFlags2">130</int>
+								<int key="NSButtonFlags2">2</int>
 								<reference key="NSNormalImage" ref="136078884"/>
 								<reference key="NSAlternateImage" ref="362895311"/>
 								<string key="NSAlternateContents"/>
@@ -955,13 +955,13 @@ ZWxwIHlvdT8KA</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{602, 651}, {492, 428}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<integer value="0"/>
+					<reference ref="8"/>
 					<string>{{602, 651}, {492, 428}}</string>
 					<reference ref="8"/>
 					<string>{196, 240}</string>
 					<string>{{49, 462}, {492, 394}}</string>
-					<integer value="1" id="5"/>
-					<reference ref="5"/>
+					<reference ref="9"/>
+					<reference ref="9"/>
 					<string>{492, 5000}</string>
 					<string>{492, 393}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
