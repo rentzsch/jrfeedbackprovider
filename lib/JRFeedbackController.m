@@ -41,6 +41,7 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
     self = [super initWithWindowNibName:@"JRFeedbackProvider"];
     if (self) {
         //[self window];
+        includeEmailAddress = YES;
     }
     return self;
 }
@@ -82,6 +83,13 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
     }
 }
 
+- (BOOL)includeEmailAddress {
+    return includeEmailAddress;
+}
+- (void)setIncludeEmailAddress:(BOOL)flag {
+    includeEmailAddress = flag;
+}
+
 - (IBAction)switchSectionAction:(NSSegmentedControl*)sender {
     [sectionStrings[currentSection] release];
     sectionStrings[currentSection] = [[textView textStorage] copy];
@@ -92,7 +100,7 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
     [textView moveDown:self];
     
     if (JRFeedbackController_SupportRequest == currentSection) {
-        [includeEmailAddressCheckbox setIntValue:YES];
+        [self setIncludeEmailAddress:YES];
     }
 }
 
@@ -144,7 +152,7 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
     }
     
     NSString *email = @"<email suppressed>";
-    if ([includeEmailAddressCheckbox intValue]) {
+    if ([self includeEmailAddress]) {
         if ([[nameTextField stringValue] length]) {
             NSMutableString *name = [[[nameTextField stringValue] mutableCopy] autorelease];
             [name replaceOccurrencesOfString:@"\"" withString:@"\\\"" options:0 range:NSMakeRange(0, [name length])];

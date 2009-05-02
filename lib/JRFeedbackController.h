@@ -17,17 +17,20 @@ typedef enum {
 @interface JRFeedbackController : NSWindowController {
     IBOutlet NSTextView *textView;
     IBOutlet NSButton *includeHardwareDetailsCheckbox;
-    IBOutlet NSButton *includeEmailAddressCheckbox;
     IBOutlet NSTextField *nameTextField;
     IBOutlet NSComboBox *emailAddressComboBox;
     IBOutlet NSProgressIndicator *progress;
     
     NSAttributedString *sectionStrings[JRFeedbackController_SectionCount];
     JRFeedbackController_Section currentSection;
+    BOOL includeEmailAddress;
 }
 
 + (void)showFeedback;
 + (void)showFeedbackWithBugDetails:(NSString *)details;
+
+- (BOOL)includeEmailAddress;
+- (void)setIncludeEmailAddress:(BOOL)flag;
 
 - (IBAction)switchSectionAction:(NSSegmentedControl*)sender;
 - (IBAction)submitAction:(id)sender;

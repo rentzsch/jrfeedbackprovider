@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.03">
+<archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.02">
 	<data>
 		<int key="IBDocument.SystemTarget">1040</int>
 		<string key="IBDocument.SystemVersion">9G55</string>
-		<string key="IBDocument.InterfaceBuilderVersion">677</string>
+		<string key="IBDocument.InterfaceBuilderVersion">672</string>
 		<string key="IBDocument.AppKitVersion">949.43</string>
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
@@ -13,15 +13,6 @@
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-		</object>
-		<object class="NSMutableDictionary" key="IBDocument.Metadata">
-			<bool key="EncodedWithXMLCoder">YES</bool>
-			<object class="NSArray" key="dict.sortedKeys">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-			</object>
-			<object class="NSMutableArray" key="dict.values">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-			</object>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.RootObjects" id="1000">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -669,14 +660,6 @@ ZWxwIHlvdT8KA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">includeEmailAddressCheckbox</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="10421984"/>
-					</object>
-					<int key="connectionID">104</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">emailAddressComboBox</string>
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="784824271"/>
@@ -685,19 +668,59 @@ ZWxwIHlvdT8KA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">nameTextFiend</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="526656399"/>
-					</object>
-					<int key="connectionID">111</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">nameTextField</string>
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="526656399"/>
 					</object>
 					<int key="connectionID">112</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: includeEmailAddress</string>
+						<reference key="source" ref="10421984"/>
+						<reference key="destination" ref="1001"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="10421984"/>
+							<reference key="NSDestination" ref="1001"/>
+							<string key="NSLabel">value: includeEmailAddress</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">includeEmailAddress</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">113</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: includeEmailAddress</string>
+						<reference key="source" ref="784824271"/>
+						<reference key="destination" ref="1001"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="784824271"/>
+							<reference key="NSDestination" ref="1001"/>
+							<string key="NSLabel">enabled: includeEmailAddress</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">includeEmailAddress</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">118</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: includeEmailAddress</string>
+						<reference key="source" ref="526656399"/>
+						<reference key="destination" ref="1001"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="526656399"/>
+							<reference key="NSDestination" ref="1001"/>
+							<string key="NSLabel">enabled: includeEmailAddress</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">includeEmailAddress</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">119</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -932,12 +955,12 @@ ZWxwIHlvdT8KA</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{602, 651}, {492, 428}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="NO"/>
+					<integer value="0"/>
 					<string>{{602, 651}, {492, 428}}</string>
 					<reference ref="8"/>
 					<string>{196, 240}</string>
 					<string>{{49, 462}, {492, 394}}</string>
-					<boolean value="YES" id="5"/>
+					<integer value="1" id="5"/>
 					<reference ref="5"/>
 					<string>{492, 5000}</string>
 					<string>{492, 393}</string>
@@ -983,7 +1006,7 @@ ZWxwIHlvdT8KA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">112</int>
+			<int key="maxID">119</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1011,7 +1034,6 @@ ZWxwIHlvdT8KA</bytes>
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>emailAddressComboBox</string>
-							<string>includeEmailAddressCheckbox</string>
 							<string>includeHardwareDetailsCheckbox</string>
 							<string>nameTextField</string>
 							<string>progress</string>
@@ -1020,7 +1042,6 @@ ZWxwIHlvdT8KA</bytes>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSComboBox</string>
-							<string>NSButton</string>
 							<string>NSButton</string>
 							<string>NSTextField</string>
 							<string>NSProgressIndicator</string>
