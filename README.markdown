@@ -17,6 +17,8 @@ Please [report bugs and request features](http://rentzsch.lighthouseapp.com/proj
 * **1.5**
 	* [NEW] Use SystemConfiguration.framework to ensure feedback host reachablity before presenting panel. (rentzsch)
 
+	* [NEW] Disable contact fields, when "Include contact info:" is unchecked. Switch to bindings for include email address. (Dave Dribin)
+
 	* [CHANGE] Put user name in seperate field since PHP's `is_valid_email()` doesn't understand proper RFC-822. Don't POST name, email or systemProfile fields if they're empty. Finally: s/includeEmailAddress/includeContactInfo ivar and IBOutlet.	(rentzsch)
 
 	* [FIX] Condition inversion in jrfeedback.php dealing with email addresses. (rentzsch)
