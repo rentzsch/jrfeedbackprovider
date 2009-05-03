@@ -14,6 +14,13 @@ Please [report bugs and request features](http://rentzsch.lighthouseapp.com/proj
 
 ##Version History
 
+* **1.5**
+	* [NEW] Use SystemConfiguration.framework to ensure feedback host reachablity before presenting panel. (rentzsch)
+
+	* [CHANGE] Put user name in seperate field since PHP's `is_valid_email()` doesn't understand proper RFC-822. Don't POST name, email or systemProfile fields if they're empty. Finally: s/includeEmailAddress/includeContactInfo ivar and IBOutlet.	(rentzsch)
+
+	* [FIX] Condition inversion in jrfeedback.php dealing with email addresses. (rentzsch)
+
 * **1.4**
 	* [NEW] Add field for the submitter's name, auto-populated from the address book. (Victoria Wang)
 
