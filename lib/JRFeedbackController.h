@@ -1,9 +1,9 @@
 /*******************************************************************************
-	JRFeedbackController.h
-		Copyright (c) 2008-2009 Jonathan 'Wolf' Rentzsch: <http://rentzsch.com>
-		Some rights reserved: <http://opensource.org/licenses/mit-license.php>
+    JRFeedbackController.h
+        Copyright (c) 2008-2009 Jonathan 'Wolf' Rentzsch: <http://rentzsch.com>
+        Some rights reserved: <http://opensource.org/licenses/mit-license.php>
 
-	***************************************************************************/
+    ***************************************************************************/
 
 #import <Cocoa/Cocoa.h>
 
@@ -23,14 +23,14 @@ typedef enum {
     
     NSAttributedString *sectionStrings[JRFeedbackController_SectionCount];
     JRFeedbackController_Section currentSection;
-    BOOL includeEmailAddress;
+    BOOL includeContactInfo;
 }
 
 + (void)showFeedback;
 + (void)showFeedbackWithBugDetails:(NSString *)details;
 
-- (BOOL)includeEmailAddress;
-- (void)setIncludeEmailAddress:(BOOL)flag;
+- (BOOL)includeContactInfo;
+- (void)setIncludeContactInfo:(BOOL)flag;
 
 - (IBAction)switchSectionAction:(NSSegmentedControl*)sender;
 - (IBAction)submitAction:(id)sender;

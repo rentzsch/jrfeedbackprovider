@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.02">
+<archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.03">
 	<data>
 		<int key="IBDocument.SystemTarget">1040</int>
-		<string key="IBDocument.SystemVersion">9G55</string>
-		<string key="IBDocument.InterfaceBuilderVersion">672</string>
+		<string key="IBDocument.SystemVersion">9G66</string>
+		<string key="IBDocument.InterfaceBuilderVersion">677</string>
 		<string key="IBDocument.AppKitVersion">949.43</string>
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="63"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+		</object>
+		<object class="NSMutableDictionary" key="IBDocument.Metadata">
+			<bool key="EncodedWithXMLCoder">YES</bool>
+			<object class="NSArray" key="dict.sortedKeys">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+			</object>
+			<object class="NSMutableArray" key="dict.values">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+			</object>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.RootObjects" id="1000">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -36,7 +44,7 @@
 				<string key="NSWindowContentMaxSize">{492, 5000}</string>
 				<string key="NSWindowContentMinSize">{492, 393}</string>
 				<object class="NSView" key="NSWindowView" id="1006">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">319</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -576,7 +584,6 @@ ZWxwIHlvdT8KA</bytes>
 						</object>
 					</object>
 					<string key="NSFrameSize">{492, 428}</string>
-					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMinSize">{492, 415}</string>
@@ -676,15 +683,15 @@ ZWxwIHlvdT8KA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: includeEmailAddress</string>
+						<string key="label">value: includeContactInfo</string>
 						<reference key="source" ref="10421984"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="10421984"/>
 							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">value: includeEmailAddress</string>
+							<string key="NSLabel">value: includeContactInfo</string>
 							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">includeEmailAddress</string>
+							<string key="NSKeyPath">includeContactInfo</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
@@ -692,15 +699,15 @@ ZWxwIHlvdT8KA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">enabled: includeEmailAddress</string>
+						<string key="label">enabled: includeContactInfo</string>
 						<reference key="source" ref="784824271"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="784824271"/>
 							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">enabled: includeEmailAddress</string>
+							<string key="NSLabel">enabled: includeContactInfo</string>
 							<string key="NSBinding">enabled</string>
-							<string key="NSKeyPath">includeEmailAddress</string>
+							<string key="NSKeyPath">includeContactInfo</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
@@ -708,15 +715,15 @@ ZWxwIHlvdT8KA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">enabled: includeEmailAddress</string>
+						<string key="label">enabled: includeContactInfo</string>
 						<reference key="source" ref="526656399"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="526656399"/>
 							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">enabled: includeEmailAddress</string>
+							<string key="NSLabel">enabled: includeContactInfo</string>
 							<string key="NSBinding">enabled</string>
-							<string key="NSKeyPath">includeEmailAddress</string>
+							<string key="NSKeyPath">includeContactInfo</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>

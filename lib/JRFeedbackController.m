@@ -1,9 +1,9 @@
 /*******************************************************************************
-	JRFeedbackController.m
-		Copyright (c) 2008-2009 Jonathan 'Wolf' Rentzsch: <http://rentzsch.com>
-		Some rights reserved: <http://opensource.org/licenses/mit-license.php>
+    JRFeedbackController.m
+        Copyright (c) 2008-2009 Jonathan 'Wolf' Rentzsch: <http://rentzsch.com>
+        Some rights reserved: <http://opensource.org/licenses/mit-license.php>
 
-	***************************************************************************/
+    ***************************************************************************/
 
 #import "JRFeedbackController.h"
 #import <AddressBook/AddressBook.h>
@@ -33,15 +33,15 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
         gFeedbackController = [[JRFeedbackController alloc] init];
     }
     [gFeedbackController showWindow:self];
-	// There is an assumption here that bug report is the first and default view of the window.
-	[gFeedbackController setTextViewStringTo:details];
+    // There is an assumption here that bug report is the first and default view of the window.
+    [gFeedbackController setTextViewStringTo:details];
 }
 
 - (id)init {
     self = [super initWithWindowNibName:@"JRFeedbackProvider"];
     if (self) {
         //[self window];
-        includeEmailAddress = YES;
+        includeContactInfo = YES;
     }
     return self;
 }
@@ -83,11 +83,11 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
     }
 }
 
-- (BOOL)includeEmailAddress {
-    return includeEmailAddress;
+- (BOOL)includeContactInfo {
+    return includeContactInfo;
 }
-- (void)setIncludeEmailAddress:(BOOL)flag {
-    includeEmailAddress = flag;
+- (void)setIncludeContactInfo:(BOOL)flag {
+    includeContactInfo = flag;
 }
 
 - (IBAction)switchSectionAction:(NSSegmentedControl*)sender {
@@ -100,7 +100,7 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
     [textView moveDown:self];
     
     if (JRFeedbackController_SupportRequest == currentSection) {
-        [self setIncludeEmailAddress:YES];
+        [self setIncludeContactInfo:YES];
     }
 }
 
@@ -112,13 +112,13 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
     [progress startAnimation:self];
     
     // if they checked not to include hardware, don't scan. Post right away.
-	if ([includeHardwareDetailsCheckbox intValue] == 1) {
-		[NSThread detachNewThreadSelector:@selector(system_profilerThread:)
-								 toTarget:self
-							   withObject:nil];
-	} else {
-		[self postFeedback:@"<systemProfile suppressed>"];
-	}
+    if ([includeHardwareDetailsCheckbox intValue] == 1) {
+        [NSThread detachNewThreadSelector:@selector(system_profilerThread:)
+                                 toTarget:self
+                               withObject:nil];
+    } else {
+        [self postFeedback:@"<systemProfile suppressed>"];
+    }
 }
 
 - (void)system_profilerThread:(id)ignored {
@@ -151,25 +151,25 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
         postURL = [[NSUserDefaults standardUserDefaults] stringForKey:@"JRFeedbackURL"];
     }
     
-    NSString *email = @"<email suppressed>";
-    if ([self includeEmailAddress]) {
+    NSMutableDictionary *form = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 JRFeedbackType[currentSection], @"feedbackType",
+                                 [sectionStrings[currentSection] string], @"feedback",
+                                 [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"CFBundleName"], @"appName",
+                                 [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"CFBundleIdentifier"], @"bundleID",
+                                 [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"CFBundleVersion"], @"version",
+                                 nil];
+    if (systemProfile) {
+        [form setObject:systemProfile forKey:@"systemProfile"];
+    }
+    if ([self includeContactInfo]) {
+        if ([[emailAddressComboBox stringValue] length]) {
+            [form setObject:[emailAddressComboBox stringValue] forKey:@"email"];
+        }
         if ([[nameTextField stringValue] length]) {
-            NSMutableString *name = [[[nameTextField stringValue] mutableCopy] autorelease];
-            [name replaceOccurrencesOfString:@"\"" withString:@"\\\"" options:0 range:NSMakeRange(0, [name length])];
-            email = [NSString stringWithFormat:@"\"%@\" <%@>", name, [emailAddressComboBox stringValue]];
-        } else {
-            email = [emailAddressComboBox stringValue];
+            [form setObject:[nameTextField stringValue] forKey:@"name"];
         }
     }
-    NSDictionary *form = [NSDictionary dictionaryWithObjectsAndKeys:
-                          JRFeedbackType[currentSection], @"feedbackType",
-                          [sectionStrings[currentSection] string], @"feedback",
-                          email, @"email",
-                          [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"CFBundleName"], @"appName",
-                          [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"CFBundleIdentifier"], @"bundleID",
-                          [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"CFBundleVersion"], @"version",
-                          systemProfile, @"systemProfile",
-                          nil];
+    
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:postURL] postForm:form];
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
@@ -203,9 +203,9 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
 
 - (void)setTextViewStringTo:(NSString *)details
 {
-	// TODO: doing this makes all the text bold, I'm not hip to the attr string stuff done in this class
-	// so it's not easy for me to fix.
-	[textView setString:details];
+    // TODO: doing this makes all the text bold, I'm not hip to the attr string stuff done in this class
+    // so it's not easy for me to fix.
+    [textView setString:details];
 }
 
 @end
