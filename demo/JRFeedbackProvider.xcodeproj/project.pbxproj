@@ -12,6 +12,7 @@
 		795A7F92099D0E3600450061 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 795A7F91099D0E3600450061 /* AppController.m */; };
 		796F33960DAE7686005201F5 /* JRFeedbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 796F33950DAE7686005201F5 /* JRFeedbackController.m */; };
 		797DF7F10DCA61E0006A6500 /* JRFeedbackProvider.xib in Resources */ = {isa = PBXBuildFile; fileRef = 797DF7F00DCA61E0006A6500 /* JRFeedbackProvider.xib */; };
+		79E889440FAE38A100EFE883 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E889430FAE38A100EFE883 /* SystemConfiguration.framework */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -35,6 +36,7 @@
 		796F33940DAE7686005201F5 /* JRFeedbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JRFeedbackController.h; path = ../lib/JRFeedbackController.h; sourceTree = "<group>"; };
 		796F33950DAE7686005201F5 /* JRFeedbackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JRFeedbackController.m; path = ../lib/JRFeedbackController.m; sourceTree = "<group>"; };
 		797DF7F00DCA61E0006A6500 /* JRFeedbackProvider.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = JRFeedbackProvider.xib; path = ../lib/JRFeedbackProvider.xib; sourceTree = "<group>"; };
+		79E889430FAE38A100EFE883 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* JRFeedbackProvider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JRFeedbackProvider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -46,6 +48,7 @@
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				793C54BF0DC1281400E810BB /* AddressBook.framework in Frameworks */,
+				79E889440FAE38A100EFE883 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +71,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				79E889430FAE38A100EFE883 /* SystemConfiguration.framework */,
 				793C54BE0DC1281400E810BB /* AddressBook.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);

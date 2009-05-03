@@ -8,8 +8,7 @@
 #import "JRFeedbackController.h"
 #import <AddressBook/AddressBook.h>
 #import "NSURLRequest+postForm.h"
-
-// TODO Sys Config network presensce
+#import <SystemConfiguration/SCNetwork.h>
 
 JRFeedbackController *gFeedbackController = nil;
 
@@ -19,22 +18,49 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
     @"SUPPORT" // JRFeedbackController_SupportRequest
 };
 
+@interface JRFeedbackController ()
++ (NSURL*)postURL;
+@end
+
 @implementation JRFeedbackController
 
 + (void)showFeedback {
-    if (!gFeedbackController) {
-        gFeedbackController = [[JRFeedbackController alloc] init];
-    }
-    [gFeedbackController showWindow:self];
+    [self showFeedbackWithBugDetails:nil];
 }
 
+#define kMyIgnorableSCNetworkFlags  (kSCNetworkFlagsReachable|kSCNetworkFlagsIsLocalAddress|kSCNetworkFlagsIsDirect)
+
 + (void)showFeedbackWithBugDetails:(NSString *)details {
-    if (!gFeedbackController) {
-        gFeedbackController = [[JRFeedbackController alloc] init];
+    SCNetworkConnectionFlags reachabilityFlags;
+    Boolean reachabilityResult = SCNetworkCheckReachabilityByName([[[JRFeedbackController postURL] host] UTF8String], &reachabilityFlags);
+    
+    //NSLog(@"reachabilityFlags: %lx", reachabilityFlags);
+    reachabilityFlags &= ~kMyIgnorableSCNetworkFlags;
+    //NSLog(@"reachabilityFlags masked: %lx", reachabilityFlags);
+    BOOL showFeedbackWindow = reachabilityResult && (reachabilityFlags == 0L);
+    
+    if (!showFeedbackWindow) {
+        int alertResult = [[NSAlert alertWithMessageText:@"Feedback Host Not Reachable"
+                                           defaultButton:@"Proceed Anyway"
+                                         alternateButton:@"Cancel"
+                                             otherButton:nil
+                               informativeTextWithFormat:@"You may not be able to send feedback because %@ isn't reachable.\n\nPlease ensure you have a network connection before proceeding.\n", [[JRFeedbackController postURL] host]] runModal];
+        if (NSAlertDefaultReturn == alertResult) {
+            showFeedbackWindow = YES;
+        }
     }
-    [gFeedbackController showWindow:self];
-    // There is an assumption here that bug report is the first and default view of the window.
-    [gFeedbackController setTextViewStringTo:details];
+    
+    if (showFeedbackWindow) {
+        if (!gFeedbackController) {
+            gFeedbackController = [[JRFeedbackController alloc] init];
+        }
+        [gFeedbackController showWindow:self];
+        
+        // There is an assumption here that bug report is the first and default view of the window.
+        if (details) {
+            [gFeedbackController setTextViewStringTo:details];
+        }
+    }
 }
 
 - (id)init {
@@ -146,10 +172,6 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
 }
 
 - (void)postFeedback:(NSString*)systemProfile {
-    NSString *postURL = [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"JRFeedbackURL"];
-    if ([[NSUserDefaults standardUserDefaults] stringForKey:@"JRFeedbackURL"]) {
-        postURL = [[NSUserDefaults standardUserDefaults] stringForKey:@"JRFeedbackURL"];
-    }
     
     NSMutableDictionary *form = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  JRFeedbackType[currentSection], @"feedbackType",
@@ -170,7 +192,7 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
         }
     }
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:postURL] postForm:form];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[JRFeedbackController postURL] postForm:form];
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
@@ -208,9 +230,13 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
     [textView setString:details];
 }
 
-@end
++ (NSURL*)postURL {
+    NSString *postURLString = [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"JRFeedbackURL"];
+    if ([[NSUserDefaults standardUserDefaults] stringForKey:@"JRFeedbackURL"]) {
+        postURLString = [[NSUserDefaults standardUserDefaults] stringForKey:@"JRFeedbackURL"];
+    }
+    NSAssert(postURLString, @"JRFeedbackURL not defined");
+    return [NSURL URLWithString:postURLString];
+}
 
-#if 0
-#import <SystemConfiguration/SCNetwork.h>
-SCNetworkCheckReachabilityByName
-#endif
+@end
