@@ -22,9 +22,9 @@ if (array_key_exists('feedback', $_REQUEST)) {
 	// TODO: It'd be nice to make sure the string looks like a 
 	// real email address but I'll assume everyone is playing nice.
 	if ($_REQUEST['email'] == '') {
-	    $email = $_REQUEST['email'];
-	} else {
         $email = 'YOUR_EMAIL_ADDRESS_HERE@gmail.com';
+	} else {
+	    $email = $_REQUEST['email'];
     }
 	$feedback = $_REQUEST['feedback'];
 	$bundleID = $_REQUEST['bundleID'];
