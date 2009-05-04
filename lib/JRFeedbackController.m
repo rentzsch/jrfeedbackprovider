@@ -28,23 +28,24 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
     [self showFeedbackWithBugDetails:nil];
 }
 
-#define kMyIgnorableSCNetworkFlags  (kSCNetworkFlagsReachable|kSCNetworkFlagsIsLocalAddress|kSCNetworkFlagsIsDirect)
-
 + (void)showFeedbackWithBugDetails:(NSString *)details {
     SCNetworkConnectionFlags reachabilityFlags;
     Boolean reachabilityResult = SCNetworkCheckReachabilityByName([[[JRFeedbackController postURL] host] UTF8String], &reachabilityFlags);
     
     //NSLog(@"reachabilityFlags: %lx", reachabilityFlags);
-    reachabilityFlags &= ~kMyIgnorableSCNetworkFlags;
-    //NSLog(@"reachabilityFlags masked: %lx", reachabilityFlags);
-    BOOL showFeedbackWindow = reachabilityResult && (reachabilityFlags == 0L);
+    BOOL showFeedbackWindow = reachabilityResult
+        && (reachabilityFlags & kSCNetworkFlagsReachable)
+        && !(reachabilityFlags & kSCNetworkFlagsConnectionRequired)
+        && !(reachabilityFlags & kSCNetworkFlagsConnectionAutomatic)
+        && !(reachabilityFlags & kSCNetworkFlagsInterventionRequired);
     
     if (!showFeedbackWindow) {
         int alertResult = [[NSAlert alertWithMessageText:@"Feedback Host Not Reachable"
                                            defaultButton:@"Proceed Anyway"
                                          alternateButton:@"Cancel"
                                              otherButton:nil
-                               informativeTextWithFormat:@"You may not be able to send feedback because %@ isn't reachable.\n\nPlease ensure you have a network connection before proceeding.\n", [[JRFeedbackController postURL] host]] runModal];
+                               informativeTextWithFormat:@"You may not be able to send feedback because %@ isn't reachable.\n\nPlease ensure you have a network connection before proceeding.\n", [[JRFeedbackController postURL] host]
+                            ] runModal];
         if (NSAlertDefaultReturn == alertResult) {
             showFeedbackWindow = YES;
         }
