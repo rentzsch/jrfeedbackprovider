@@ -14,7 +14,14 @@ Please [report bugs and request features](http://rentzsch.lighthouseapp.com/proj
 
 ##Version History
 
+* **1.5.1**
+
+	* [NEW] Conditionally set segment style in code, so XIB can compile without warnings on 10.4. ([Dave Dribin](http://github.com/ddribin/jrfeedbackprovider/commit/15227df3de3128017fce7785853f88ba77792239))
+
+	* [FIX] Leaked return of CFUUIDCreate() (reported by clang static analyzer). Also make GC dual-mode safe by calling `NSMakeCollectable()` on return of `CFUUIDCreateString()`. ([Dave Dribin](http://github.com/ddribin/jrfeedbackprovider/commit/b1fb2b9c658f25f620f57f90d23aa29d2f9622a3))
+
 * **1.5**
+
 	* [NEW] Use SystemConfiguration.framework to ensure feedback host reachablity before presenting panel. (rentzsch)
 
 	* [NEW] Disable contact fields, when "Include contact info:" is unchecked. Switch to bindings for include email address. (Dave Dribin)
@@ -24,11 +31,15 @@ Please [report bugs and request features](http://rentzsch.lighthouseapp.com/proj
 	* [FIX] Condition inversion in jrfeedback.php dealing with email addresses. (rentzsch)
 
 * **1.4**
+
 	* [NEW] Add field for the submitter's name, auto-populated from the address book. (Victoria Wang)
 
 * **1.3**
+
 	* [NEW] Use `+[NSBundle bundleForClass:]` instead of `+[NSBundle mainBundle]` so JRFeedbackProvider is usable with plug-ins like .prefPanes. (Joesph Wardell)
+
 	* [NEW] 10.4 support. Remove sole trivial use of ObjC 2 fast-enumeration so we can also target 10.4. (Joesph Wardell)
+
 	* [NEW] Allow user to resize window, but vertically only. (Dave Dribin)
 
 * **1.2** *(formerly released as 1.1.1)*
