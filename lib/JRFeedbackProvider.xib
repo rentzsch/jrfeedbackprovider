@@ -1,26 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.03">
+<archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.02">
 	<data>
 		<int key="IBDocument.SystemTarget">1040</int>
-		<string key="IBDocument.SystemVersion">9G66</string>
-		<string key="IBDocument.InterfaceBuilderVersion">677</string>
-		<string key="IBDocument.AppKitVersion">949.43</string>
+		<string key="IBDocument.SystemVersion">9J61</string>
+		<string key="IBDocument.InterfaceBuilderVersion">672</string>
+		<string key="IBDocument.AppKitVersion">949.46</string>
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="2"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-		</object>
-		<object class="NSMutableDictionary" key="IBDocument.Metadata">
-			<bool key="EncodedWithXMLCoder">YES</bool>
-			<object class="NSArray" key="dict.sortedKeys">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-			</object>
-			<object class="NSMutableArray" key="dict.values">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-			</object>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.RootObjects" id="1000">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -44,14 +36,14 @@
 				<string key="NSWindowContentMaxSize">{492, 5000}</string>
 				<string key="NSWindowContentMinSize">{492, 393}</string>
 				<object class="NSView" key="NSWindowView" id="1006">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">319</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSSegmentedControl" id="61085660">
 							<reference key="NSNextResponder" ref="1006"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{19, 384}, {454, 25}}</string>
+							<string key="NSFrame">{{19, 385}, {458, 24}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSSegmentedCell" key="NSCell" id="699074402">
@@ -84,7 +76,6 @@
 										<int key="NSSegmentItemImageScaling">2</int>
 									</object>
 								</object>
-								<int key="NSSegmentStyle">4</int>
 							</object>
 						</object>
 						<object class="NSScrollView" id="310502642">
@@ -584,6 +575,7 @@ ZWxwIHlvdT8KA</bytes>
 						</object>
 					</object>
 					<string key="NSFrameSize">{492, 428}</string>
+					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMinSize">{492, 415}</string>
@@ -728,6 +720,14 @@ ZWxwIHlvdT8KA</bytes>
 						</object>
 					</object>
 					<int key="connectionID">119</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">segmentedControl</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="61085660"/>
+					</object>
+					<int key="connectionID">120</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -960,10 +960,10 @@ ZWxwIHlvdT8KA</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{602, 651}, {492, 428}}</string>
+					<string>{{314, 619}, {492, 428}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="8"/>
-					<string>{{602, 651}, {492, 428}}</string>
+					<string>{{314, 619}, {492, 428}}</string>
 					<reference ref="8"/>
 					<string>{196, 240}</string>
 					<string>{{49, 462}, {492, 394}}</string>
@@ -1013,7 +1013,7 @@ ZWxwIHlvdT8KA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">119</int>
+			<int key="maxID">120</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1044,6 +1044,7 @@ ZWxwIHlvdT8KA</bytes>
 							<string>includeHardwareDetailsCheckbox</string>
 							<string>nameTextField</string>
 							<string>progress</string>
+							<string>segmentedControl</string>
 							<string>textView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -1052,6 +1053,7 @@ ZWxwIHlvdT8KA</bytes>
 							<string>NSButton</string>
 							<string>NSTextField</string>
 							<string>NSProgressIndicator</string>
+							<string>NSSegmentedControl</string>
 							<string>NSTextView</string>
 						</object>
 					</object>

@@ -20,6 +20,7 @@ typedef enum {
     IBOutlet NSTextField *nameTextField;
     IBOutlet NSComboBox *emailAddressComboBox;
     IBOutlet NSProgressIndicator *progress;
+    IBOutlet NSSegmentedControl *segmentedControl;
     
     NSAttributedString *sectionStrings[JRFeedbackController_SectionCount];
     JRFeedbackController_Section currentSection;

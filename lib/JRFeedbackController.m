@@ -74,6 +74,12 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
 }
 
 - (void)windowDidLoad {
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5
+    // Not sure why, but you have to call this twice to "take" (10.5.7).
+    // First call always sets it to NSSegmentStyleRounded.
+    [segmentedControl setSegmentStyle:NSSegmentStyleTexturedSquare];
+    [segmentedControl setSegmentStyle:NSSegmentStyleTexturedSquare];
+#endif
     NSString* title = [NSString stringWithFormat:@"%@ Feedback", [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey]];
     [[self window] setTitle:title];
     
