@@ -48,7 +48,13 @@
     // Create the mime multipart boundary.
     
     // TODO scan `values` to ensure uniqueness of `boundary`. Loop+regen UUID if collision is discovered.
-    NSString *uuid = [(id)CFUUIDCreateString(kCFAllocatorDefault, CFUUIDCreate(kCFAllocatorDefault)) autorelease];
+    CFUUIDRef cfUuid = CFUUIDCreate(kCFAllocatorDefault);
+    NSString * uuid = (id)CFUUIDCreateString(kCFAllocatorDefault, cfUuid);
+    CFRelease(cfUuid);
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5
+    uuid = NSMakeCollectable(uuid);
+#endif
+    uuid = [uuid autorelease];
     NSString *boundary = [NSString stringWithFormat:@"x-mime-boundary://%@", uuid];
     
     //--
