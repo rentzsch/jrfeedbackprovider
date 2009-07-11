@@ -138,6 +138,9 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
 }
 
 - (IBAction)submitAction:(id)sender {
+    [sendButton setEnabled:NO];
+    [cancelButton setEnabled:NO];
+    
     [sectionStrings[currentSection] release];
     sectionStrings[currentSection] = [[textView textStorage] copy];
     [textView setEditable:NO];

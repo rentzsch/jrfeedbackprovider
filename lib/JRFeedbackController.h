@@ -22,6 +22,9 @@ typedef enum {
     IBOutlet NSProgressIndicator *progress;
     IBOutlet NSSegmentedControl *segmentedControl;
     
+    IBOutlet NSButton *cancelButton;
+    IBOutlet NSButton *sendButton;
+    
     NSAttributedString *sectionStrings[JRFeedbackController_SectionCount];
     JRFeedbackController_Section currentSection;
     BOOL includeContactInfo;
