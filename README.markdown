@@ -14,6 +14,10 @@ Please [report bugs and request features](http://rentzsch.lighthouseapp.com/proj
 
 ##Version History
 
+* **1.5.2**
+
+	* [FIX] Disable cancel and send when submitting. ([Brian Cooke](http://github.com/bricooke/jrfeedbackprovider/commit/91b1220f7e6f0b5d989cc7d12aec6d50b674f0b7))
+
 * **1.5.1**
 
 	* [NEW] Conditionally set segment style in code, so XIB can compile without warnings on 10.4. ([Dave Dribin](http://github.com/ddribin/jrfeedbackprovider/commit/15227df3de3128017fce7785853f88ba77792239))
