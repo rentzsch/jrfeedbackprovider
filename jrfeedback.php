@@ -19,12 +19,13 @@ if (array_key_exists('feedback', $_REQUEST)) {
 	// suppressed@auma.pair.com or anonymous@auma.pair.com
 	// FogBugz would try to send them an email and generate another 
 	// ticket telling me "Undelivered Mail Returned to Sender"
-	// TODO: It'd be nice to make sure the string looks like a 
-	// real email address but I'll assume everyone is playing nice.
-	if ($_REQUEST['email'] == '') {
-        $email = 'YOUR_EMAIL_ADDRESS_HERE@gmail.com';
-	} else {
+	
+	// Check for well formatted email address, if it's OK use their address in the "from" header, else
+	// use generic support address
+	if (eregi('^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$', $_REQUEST['email'])) {
 	    $email = $_REQUEST['email'];
+	} else {    
+        $email = 'YOUR_EMAIL_ADDRESS_HERE@gmail.com';
     }
 	$feedback = $_REQUEST['feedback'];
 	$bundleID = $_REQUEST['bundleID'];
