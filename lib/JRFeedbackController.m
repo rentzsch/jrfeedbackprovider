@@ -109,10 +109,12 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
         [nameTextField setStringValue:[NSString stringWithFormat:@"%@ %@", [me valueForProperty:kABFirstNameProperty], [me valueForProperty:kABLastNameProperty]]];
         ABMutableMultiValue *emailAddresses = [me valueForProperty:kABEmailProperty];
         unsigned addyIndex = 0, addyCount = [emailAddresses count];
-        for (; addyIndex < addyCount; addyIndex++) {
-            [emailAddressComboBox addItemWithObjectValue:[emailAddresses valueAtIndex:addyIndex]];
+        if (addyCount) {
+            for (; addyIndex < addyCount; addyIndex++) {
+                [emailAddressComboBox addItemWithObjectValue:[emailAddresses valueAtIndex:addyIndex]];
+            }
+            [emailAddressComboBox selectItemAtIndex:0];
         }
-        [emailAddressComboBox selectItemAtIndex:0];
     }
 }
 

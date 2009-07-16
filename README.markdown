@@ -14,6 +14,10 @@ Please [report bugs and request features](http://rentzsch.lighthouseapp.com/proj
 
 ##Version History
 
+* **1.5.3**
+
+	* [FIX] Was calling `[emailAddressComboBox selectItemAtIndex:0]` even when user's "me" AddressBook card lacked email addresses, causing an array-index-out-of-bounds exception to be thrown. [Rainer Standke](http://rentzsch.lighthouseapp.com/projects/24800/tickets/7-nscfarray-objectatindex-index-1-or-possibly-larger-beyond-bounds-0)
+
 * **1.5.2**
 
 	* [FIX] Disable cancel and send when submitting. ([Brian Cooke](http://github.com/bricooke/jrfeedbackprovider/commit/91b1220f7e6f0b5d989cc7d12aec6d50b674f0b7))
