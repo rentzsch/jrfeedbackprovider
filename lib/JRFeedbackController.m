@@ -40,11 +40,11 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
         && !(reachabilityFlags & kSCNetworkFlagsInterventionRequired);
     
     if (!showFeedbackWindow) {
-        int alertResult = [[NSAlert alertWithMessageText:@"Feedback Host Not Reachable"
-                                           defaultButton:@"Proceed Anyway"
-                                         alternateButton:@"Cancel"
+        int alertResult = [[NSAlert alertWithMessageText:NSLocalizedStringFromTable(@"Feedback Host Not Reachable", @"JRFeedbackProvider", nil)
+                                           defaultButton:NSLocalizedStringFromTable(@"Proceed Anyway", @"JRFeedbackProvider", nil)
+                                         alternateButton:NSLocalizedStringFromTable(@"Cancel", @"JRFeedbackProvider", nil)
                                              otherButton:nil
-                               informativeTextWithFormat:@"You may not be able to send feedback because %@ isn't reachable.\n\nPlease ensure you have a network connection before proceeding.\n", [[JRFeedbackController postURL] host]
+                               informativeTextWithFormat:NSLocalizedStringFromTable(@"Unreachable Explanation", @"JRFeedbackProvider", nil), [[JRFeedbackController postURL] host]
                             ] runModal];
         if (NSAlertDefaultReturn == alertResult) {
             showFeedbackWindow = YES;
@@ -80,21 +80,22 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
     [segmentedControl setSegmentStyle:NSSegmentStyleTexturedSquare];
     [segmentedControl setSegmentStyle:NSSegmentStyleTexturedSquare];
 #endif
-    NSString* title = [NSString stringWithFormat:@"%@ Feedback", [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey]];
+    NSString* fmt = NSLocalizedStringFromTable(@"Title", @"JRFeedbackProvider", nil);
+    NSString* title = [NSString stringWithFormat:fmt, [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey]];
     [[self window] setTitle:title];
     
     NSTextStorage *text = [textView textStorage];
     
-    NSString *seperator = @"\n\n--\n\n";
+    NSString *separator = @"\n\n--\n\n";
     
-    NSRange seperatorRange = [[text string] rangeOfString:seperator];
-    sectionStrings[JRFeedbackController_BugReport] = [[text attributedSubstringFromRange:NSMakeRange(0, seperatorRange.location)] retain];
-    [text deleteCharactersInRange:NSMakeRange(0, seperatorRange.location + [seperator length])];
+    NSRange separatorRange = [[text string] rangeOfString:separator];
+    sectionStrings[JRFeedbackController_BugReport] = [[text attributedSubstringFromRange:NSMakeRange(0, separatorRange.location)] retain];
+    [text deleteCharactersInRange:NSMakeRange(0, separatorRange.location + [separator length])];
     //NSLog(@"bugReport: <%@>", [sectionStrings[JRFeedbackController_BugReport] string]);
     
-    seperatorRange = [[text string] rangeOfString:seperator];
-    sectionStrings[JRFeedbackController_FeatureRequest] = [[text attributedSubstringFromRange:NSMakeRange(0, seperatorRange.location)] retain];
-    [text deleteCharactersInRange:NSMakeRange(0, seperatorRange.location + [seperator length])];
+    separatorRange = [[text string] rangeOfString:separator];
+    sectionStrings[JRFeedbackController_FeatureRequest] = [[text attributedSubstringFromRange:NSMakeRange(0, separatorRange.location)] retain];
+    [text deleteCharactersInRange:NSMakeRange(0, separatorRange.location + [separator length])];
     //NSLog(@"featureRequest: <%@>", [sectionStrings[JRFeedbackController_FeatureRequest] string]);
     
     sectionStrings[JRFeedbackController_SupportRequest] = [[text attributedSubstringFromRange:NSMakeRange(0, [text length])] retain];

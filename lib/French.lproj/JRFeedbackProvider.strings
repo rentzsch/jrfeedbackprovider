@@ -1,0 +1,5 @@
+﻿"Title" = "Réactions %@";
+"Feedback Host Not Reachable" = "Impossible de rejoindre le serveur";
+"Proceed Anyway" = "Continuer";
+"Cancel" = "Annuler";
+"Unreachable Explanation" = "Vos commentaires ne peuvent être envoyés car %@ ne peut être rejoint.\n\nAssurez-vous d'être branché à l'Internet avant de continuer.\n";
