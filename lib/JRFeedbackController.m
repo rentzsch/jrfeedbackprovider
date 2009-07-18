@@ -238,9 +238,10 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
 
 - (void)setTextViewStringTo:(NSString *)details
 {
-    // TODO: doing this makes all the text bold, I'm not hip to the attr string stuff done in this class
-    // so it's not easy for me to fix.
+    NSFont *resetFontWeight = [[textView textStorage] font];
+	[[textView textStorage] setFont:[NSFont fontWithName:[resetFontWeight familyName] size:[resetFontWeight pointSize]]];
     [textView setString:details];
+	[resetFontWeight release];
 }
 
 + (NSURL*)postURL {
