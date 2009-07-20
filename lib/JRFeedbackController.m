@@ -10,6 +10,10 @@
 #import "NSURLRequest+postForm.h"
 #import <SystemConfiguration/SCNetwork.h>
 
+#if USE_GROWL
+	#import <Growl/GrowlApplicationBridge.h>
+#endif
+
 JRFeedbackController *gFeedbackController = nil;
 
 NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
@@ -223,13 +227,58 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection*)connection {
-    // TODO Drop Thank you sheet
-    [self closeFeedback];
+#if USE_GROWL
+	[GrowlApplicationBridge setGrowlDelegate:@""];
+	[GrowlApplicationBridge notifyWithTitle:@"Thank you!"
+								description:@"Your feedback has been sent"
+						   notificationName:@"Feedback Sent"
+								   iconData:nil
+								   priority:0
+								   isSticky:NO
+							   clickContext:nil];
+	[self closeFeedback];
+#else
+	//	drop thank you sheet
+	[self displayAlertMessage:@"Thank you for your feedback!"
+		  withInformativeText:@"Your feedback has been sent"
+				andAlertStyle:NSInformationalAlertStyle];
+#endif
+}
+
+- (void)alertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo
+{
+	[self closeFeedback];//moved from connectionDidFinishLoading:
+}
+
+- (void)displayAlertMessage:(NSString *)message 
+		withInformativeText:(NSString *)text 
+			  andAlertStyle:(NSAlertStyle)alertStyle
+{
+	NSAlert *thankYouAlert = [[[NSAlert alloc] init] autorelease];
+	[thankYouAlert addButtonWithTitle:@"OK"];
+	[thankYouAlert setMessageText:message];
+	[thankYouAlert setInformativeText:text];
+	[thankYouAlert setAlertStyle:alertStyle];
+	
+	//	stop the animation of the progress indicator, so user doesn't think 
+	//	something is still going on
+	[progress stopAnimation:self];
+	
+	//	disply thank you
+    [thankYouAlert beginSheetModalForWindow:[gFeedbackController window]
+							  modalDelegate:self 
+							 didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:)
+								contextInfo:nil];
 }
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error {
     NSLog(@"-[JRFeedback connection:didFailWithError:%@]", error);
-    [self closeFeedback];
+	
+	//	drop fail sheet
+	[self displayAlertMessage:@"An Error Occured"
+		  withInformativeText:@"There was a problem sending your feedback.  Please try again at another time"
+				andAlertStyle:NSInformationalAlertStyle];
+
 }
 
 - (void)windowWillClose:(NSNotification*)notification {

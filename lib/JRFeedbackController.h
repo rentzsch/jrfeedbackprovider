@@ -7,6 +7,15 @@
 
 #import <Cocoa/Cocoa.h>
 
+/*
+ OPTIONAL: use Growl to post the 'thank you' message after feedback is sent.
+ If your app includes the Growl framework, set USE_GROWL to 1 and JRFeedbackController.m 
+ will include the GrowlApplicationBridge.h file required, and post a Growl message when
+ the feedback is sent.
+ NOTE: you must add an entry to your Growl Dict plist to register this new message
+ */
+#define USE_GROWL 0
+
 typedef enum {
     JRFeedbackController_BugReport,
     JRFeedbackController_FeatureRequest,
@@ -41,5 +50,10 @@ typedef enum {
 - (IBAction)cancelAction:(id)sender;
 - (void)postFeedback:(NSString*)systemProfile;
 - (void)setTextViewStringTo:(NSString *)details;
+
+- (void)displayAlertMessage:(NSString *)message 
+		withInformativeText:(NSString *)text 
+			  andAlertStyle:(NSAlertStyle)alertStyle;
+
 
 @end
