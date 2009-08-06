@@ -230,7 +230,7 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
 #if USE_GROWL
 	[GrowlApplicationBridge setGrowlDelegate:@""];
 	[GrowlApplicationBridge notifyWithTitle:@"Thank you!"
-								description:@"Your feedback has been sent"
+								description:@"Your feedback has been sent."
 						   notificationName:@"Feedback Sent"
 								   iconData:nil
 								   priority:0
@@ -240,7 +240,7 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
 #else
 	//	drop thank you sheet
 	[self displayAlertMessage:@"Thank you for your feedback!"
-		  withInformativeText:@"Your feedback has been sent"
+		  withInformativeText:@"Your feedback has been sent."
 				andAlertStyle:NSInformationalAlertStyle];
 #endif
 }
@@ -300,6 +300,13 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
     }
     NSAssert(postURLString, @"JRFeedbackURL not defined");
     return [NSURL URLWithString:postURLString];
+}
+
+// overloaded to center the window after display
+- (void)showWindow:(id)sender
+{
+    [super showWindow:sender];
+    [[self window] center];
 }
 
 @end
