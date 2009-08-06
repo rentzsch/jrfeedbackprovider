@@ -14,9 +14,23 @@ Please [report bugs and request features](http://rentzsch.lighthouseapp.com/proj
 
 ##Version History
 
+* **1.6**
+
+	* [NEW] Add a "Thank you" sheet upon successful feedback submission as well as an error sheet displaying any errors from `connection:didFailWithError:`. ([Clint Shryock](http://github.com/rentzsch/jrfeedbackprovider/commit/7ee0fe8deb4cce4876493815df943fc69ebaa200))
+
+	* [NEW] Made localizable, added French localization. ([Philippe Casgrain](http://github.com/rentzsch/jrfeedbackprovider/commit/88221115a3b511eb1011fc44e6e00ca777bf4e68))
+
+	* [NEW] Optional Growl support. The "Thank you" is displayed in a growl notification, while errors are still reported in the sheet. ([Clint Shryock](http://github.com/rentzsch/jrfeedbackprovider/commit/7ee0fe8deb4cce4876493815df943fc69ebaa200))
+
+	* [NEW] Center the feedback window. ([Brian Cooke](http://github.com/rentzsch/jrfeedbackprovider/commit/f4c063019e164c3e7a1f16ae7f5c4250f922d2bf))
+
+	* [NEW] In `jrfeedback.php`, if the supplied email address is well-formed, allow using it as the SMTP `From:` header. ([Clint Shryock](http://github.com/rentzsch/jrfeedbackprovider/commit/b6b1ab1e629a7be218b805f09bcba177ff6b3407))
+
+	* [FIX] Reset font weight upon setting text to avoid "everything bolded" bug. [ticket 5](http://rentzsch.lighthouseapp.com/projects/24800/tickets/5) ([Clint Shryock](http://github.com/rentzsch/jrfeedbackprovider/commit/86b6ed69406f259ce7e961fe10337d753b73733e))
+
 * **1.5.3**
 
-	* [FIX] Was calling `[emailAddressComboBox selectItemAtIndex:0]` even when user's "me" AddressBook card lacked email addresses, causing an array-index-out-of-bounds exception to be thrown. [Rainer Standke](http://rentzsch.lighthouseapp.com/projects/24800/tickets/7-nscfarray-objectatindex-index-1-or-possibly-larger-beyond-bounds-0)
+	* [FIX] Was calling `[emailAddressComboBox selectItemAtIndex:0]` even when user's "me" AddressBook card lacked email addresses, causing an array-index-out-of-bounds exception to be thrown. ([Rainer Standke](http://rentzsch.lighthouseapp.com/projects/24800/tickets/7-nscfarray-objectatindex-index-1-or-possibly-larger-beyond-bounds-0))
 
 * **1.5.2**
 
