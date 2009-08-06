@@ -305,8 +305,8 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
 // overloaded to center the window after display
 - (void)showWindow:(id)sender
 {
-    [super showWindow:sender];
     [[self window] center];
+    [super showWindow:sender];
 }
 
 @end
