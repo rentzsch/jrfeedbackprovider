@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		793749560DC7E3F500B572B3 /* NSURLRequest+postForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 793749550DC7E3F500B572B3 /* NSURLRequest+postForm.m */; };
+		793C1955102B5926000760D9 /* JRFeedbackProvider.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793C1954102B5926000760D9 /* JRFeedbackProvider.xib */; };
 		793C54BF0DC1281400E810BB /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 793C54BE0DC1281400E810BB /* AddressBook.framework */; };
 		795A7F92099D0E3600450061 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 795A7F91099D0E3600450061 /* AppController.m */; };
 		796F33960DAE7686005201F5 /* JRFeedbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 796F33950DAE7686005201F5 /* JRFeedbackController.m */; };
-		797DF7F10DCA61E0006A6500 /* JRFeedbackProvider.xib in Resources */ = {isa = PBXBuildFile; fileRef = 797DF7F00DCA61E0006A6500 /* JRFeedbackProvider.xib */; };
 		79E889440FAE38A100EFE883 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E889430FAE38A100EFE883 /* SystemConfiguration.framework */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -35,7 +35,7 @@
 		795A7F91099D0E3600450061 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 		796F33940DAE7686005201F5 /* JRFeedbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JRFeedbackController.h; path = ../lib/JRFeedbackController.h; sourceTree = "<group>"; };
 		796F33950DAE7686005201F5 /* JRFeedbackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JRFeedbackController.m; path = ../lib/JRFeedbackController.m; sourceTree = "<group>"; };
-		797DF7F00DCA61E0006A6500 /* JRFeedbackProvider.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = JRFeedbackProvider.xib; path = ../lib/JRFeedbackProvider.xib; sourceTree = "<group>"; };
+		797DF7F00DCA61E0006A6500 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = ../lib/English.lproj/JRFeedbackProvider.xib; sourceTree = "<group>"; };
 		79E889430FAE38A100EFE883 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* JRFeedbackProvider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JRFeedbackProvider.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,7 +120,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				797DF7F00DCA61E0006A6500 /* JRFeedbackProvider.xib */,
+				793C1954102B5926000760D9 /* JRFeedbackProvider.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
@@ -182,7 +182,7 @@
 			files = (
 				8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
-				797DF7F10DCA61E0006A6500 /* JRFeedbackProvider.xib in Resources */,
+				793C1955102B5926000760D9 /* JRFeedbackProvider.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +217,14 @@
 				29B97319FDCFA39411CA2CEA /* English */,
 			);
 			name = MainMenu.nib;
+			sourceTree = "<group>";
+		};
+		793C1954102B5926000760D9 /* JRFeedbackProvider.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				797DF7F00DCA61E0006A6500 /* English */,
+			);
+			name = JRFeedbackProvider.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
