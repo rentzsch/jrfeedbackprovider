@@ -67,7 +67,8 @@
     NSString* key;
     while ((key = [e nextObject]) != nil) {
 #endif
-        [formData appendFormat:@"\r\n--%@\r\n", boundary];
+		[formData appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+
         // TODO escape keys with quotes in them.
         [formData appendFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n", key];
         
@@ -76,16 +77,16 @@
             [formData appendString:@"\r\n"];
             [formData appendData:value];
         } else if ([value isKindOfClass:[NSString class]]) {
-            [formData appendFormat:@"Content-Type: text/plain; charset=utf-8\r\n\r\n"];
+            //[formData appendFormat:@"Content-Type: text/plain; charset=utf-8\r\n\r\n"]; uncomment this if you want text to be interpreted as files!
+            [formData appendString:@"\r\n"];
             [formData appendString:value];
+            [formData appendString:@"\r\n"];
         } else {
             NSAssert1(NO, @"unknown value class: %@", [value className]);
         }
     }
     [formData appendFormat:@"\r\n--%@--\r\n", boundary];
     
-    //--
-    // 
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
     [request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary] forHTTPHeaderField:@"Content-Type"];
