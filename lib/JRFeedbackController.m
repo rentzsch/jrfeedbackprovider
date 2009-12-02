@@ -9,6 +9,7 @@
 #import <AddressBook/AddressBook.h>
 #import "NSURLRequest+postForm.h"
 #import <SystemConfiguration/SCNetwork.h>
+#import <SystemConfiguration/SystemConfiguration.h>
 
 #if USE_GROWL
 	#import <Growl/GrowlApplicationBridge.h>
@@ -34,9 +35,16 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
 
 + (void)showFeedbackWithBugDetails:(NSString *)details {
     SCNetworkConnectionFlags reachabilityFlags;
-    Boolean reachabilityResult = SCNetworkCheckReachabilityByName([[[JRFeedbackController postURL] host] UTF8String], &reachabilityFlags);
-    
-    //NSLog(@"reachabilityFlags: %lx", reachabilityFlags);
+    const char *hostname = [[[JRFeedbackController postURL] host] UTF8String];  
+#ifdef MAC_OS_X_VERSION_10_6
+    SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, hostname);
+    Boolean reachabilityResult = SCNetworkReachabilityGetFlags(reachability, &reachabilityFlags);
+    CFRelease(reachability);
+#else  
+    Boolean reachabilityResult = SCNetworkCheckReachabilityByName(hostname, &reachabilityFlags);
+#endif
+  
+//    NSLog(@"reachabilityFlags: %lx", reachabilityFlags);
     BOOL showFeedbackWindow = reachabilityResult
         && (reachabilityFlags & kSCNetworkFlagsReachable)
         && !(reachabilityFlags & kSCNetworkFlagsConnectionRequired)
