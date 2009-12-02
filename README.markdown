@@ -8,11 +8,19 @@ It supplies the panel (in .xib form), the Objective-C controller code and even t
 
 Mike Zornek has created a [nice screencast demonstrating how JRFeedbackProvider works and how to integrate it with your application](http://blog.clickablebliss.com/2009/03/03/screencast-introduction-to-jrfeedbackprovider/). Thanks, Mike!
 
-Requires 10.4 or later. Developed and tested on 10.5.
+Requires 10.4 or later. Developed and tested on 10.5 and 10.6.
 
 Please [report bugs and request features](http://rentzsch.lighthouseapp.com/projects/24800-jrfeedbackprovider/tickets/new) on the [Lighthouse JRFeedbackProvider project site](http://rentzsch.lighthouseapp.com/projects/24800-jrfeedbackprovider/tickets?q=all).
 
 ##Version History
+
+* **1.7** 
+
+	* [FIX] Posting Form to Rails fixed. ([Mantas Masalskis](http://github.com/rentzsch/jrfeedbackprovider/commit/5f037fc51063c393e760d8a16b17d5b3a5d2cad0))
+
+	* [CHANGE] Update `SCNetworkCheckReachabilityByName` (deprecated in 10.6) to `SCNetworkReachabilityCreateWithName`+`SCNetworkReachabilityGetFlags`. [ticket 11](http://rentzsch.lighthouseapp.com/projects/24800/tickets/11) ([Justin Williams](http://github.com/rentzsch/jrfeedbackprovider/commit/b8f0b35dd021f8ecb46371c6c0cdaa6ab3a51cc3))
+
+	* [DEV] Explicitly set GCC_VERSION to 4.0 in demo app to compile under 10.6 (still targeting 10.4). ([rentzsch](http://github.com/rentzsch/jrfeedbackprovider/commit/58600441dbfe4c57c7f41af79ae731d7c0e61cb2))
 
 * **1.6**
 
