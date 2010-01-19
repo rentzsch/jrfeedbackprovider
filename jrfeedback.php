@@ -24,8 +24,10 @@ if (array_key_exists('feedback', $_REQUEST)) {
 	// use generic support address
 	if (eregi('^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$', $_REQUEST['email'])) {
 	    $email = $_REQUEST['email'];
+	    $name = $_REQUEST['name'];
 	} else {    
         $email = 'YOUR_EMAIL_ADDRESS_HERE@gmail.com';
+        $name = 'Unknown Submitter';
     }
 	$feedback = $_REQUEST['feedback'];
 	$bundleID = $_REQUEST['bundleID'];
@@ -35,6 +37,7 @@ if (array_key_exists('feedback', $_REQUEST)) {
         'Reply-To: ' . $email . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
 	
+	$msg .= "$name writes:\n\n";
 	$msg .= "$feedback\n";
 	$msg .= "\n--------\n\n";
 	$msg .= "Bundle ID: $bundleID\n";
