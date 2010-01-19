@@ -1,6 +1,6 @@
 /*******************************************************************************
 	NSURLRequest+postForm.m
-		Copyright (c) 2008 Jonathan 'Wolf' Rentzsch: <http://rentzsch.com>
+		Copyright (c) 2008-2009 Jonathan 'Wolf' Rentzsch: <http://rentzsch.com>
 		Some rights reserved: <http://opensource.org/licenses/mit-license.php>
 
 	***************************************************************************/
@@ -9,19 +9,19 @@
 #include <unistd.h>
 
 @interface NSMutableData (append)
-- (void)appendString:(NSString*)string;
-- (void)appendFormat:(NSString *)format, ...;
+- (void)jr_appendString:(NSString*)string;
+- (void)jr_appendFormat:(NSString *)format, ...;
 @end
 @implementation NSMutableData (append)
-- (void)appendString:(NSString*)string {
+- (void)jr_appendString:(NSString*)string {
     [self appendData:[string dataUsingEncoding:NSUTF8StringEncoding]];
 }
-- (void)appendFormat:(NSString *)format, ... {
+- (void)jr_appendFormat:(NSString *)format, ... {
     va_list args;
 	va_start(args, format);
 	NSString *string = [[[NSString alloc] initWithFormat:format arguments:args] autorelease];
 	va_end(args);
-    [self appendString:string];
+    [self jr_appendString:string];
 }
 @end
 
@@ -70,22 +70,22 @@
 		[formData appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
 
         // TODO escape keys with quotes in them.
-        [formData appendFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n", key];
+        [formData jr_appendFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n", key];
         
         id value = [values objectForKey:key];
         if ([value isKindOfClass:[NSData class]]) {
-            [formData appendString:@"\r\n"];
+            [formData jr_appendString:@"\r\n"];
             [formData appendData:value];
         } else if ([value isKindOfClass:[NSString class]]) {
             //[formData appendFormat:@"Content-Type: text/plain; charset=utf-8\r\n\r\n"]; uncomment this if you want text to be interpreted as files!
-            [formData appendString:@"\r\n"];
-            [formData appendString:value];
-            [formData appendString:@"\r\n"];
+            [formData jr_appendString:@"\r\n"];
+            [formData jr_appendString:value];
+            [formData jr_appendString:@"\r\n"];
         } else {
             NSAssert1(NO, @"unknown value class: %@", [value className]);
         }
     }
-    [formData appendFormat:@"\r\n--%@--\r\n", boundary];
+    [formData jr_appendFormat:@"\r\n--%@--\r\n", boundary];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
