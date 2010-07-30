@@ -298,7 +298,6 @@ NSString *JRFeedbackType[JRFeedbackController_SectionCount] = {
     NSFont *resetFontWeight = [[textView textStorage] font];
 	[[textView textStorage] setFont:[NSFont fontWithName:[resetFontWeight familyName] size:[resetFontWeight pointSize]]];
     [textView setString:details];
-	[resetFontWeight release];
 }
 
 + (NSURL*)postURL {
